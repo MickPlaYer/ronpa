@@ -1,0 +1,2 @@
+module RonpaHelper
+end

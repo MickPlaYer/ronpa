@@ -1,0 +1,20 @@
+body {
+  font-family: "Microsoft YaHei";
+}
+
+#charater {
+    position: fixed;
+    z-index: -1;
+    left: 50%;
+    top: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    background: image-url('ronpa/01.png');
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+}

@@ -1,0 +1,62 @@
+
+#poster {
+    position: relative;
+    display: inline-block;
+    background: #606060;
+    padding: 4px 12px 4px 12px;
+    height: 24px;
+    z-index: 2;
+    border: 4px #C00000;
+    border-style: solid;
+    border-radius: 20px;
+    border-right-width: 0px;
+    border-bottom-width: 0px;
+    border-left-width: 0px
+}
+
+#content {
+    height: 14px;
+    border-radius: 10px;
+}
+
+#sendButton {
+    height: 20px;
+    border-radius: 10px;
+}
+
+#questionMark {
+    margin-top: -6;
+    display: inline-table;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 28px;
+    width: 28px;
+    height: 28px;
+    border-radius: 18px;
+    border: 4px #C00000 solid;
+    position: relative;
+    z-index: 10;
+}
+
+#questionMark::after {
+    border-radius: 5px;
+    background: #abcdef;
+    color: #000;
+    position: absolute;
+    left: 0%;
+    top: 130%;
+    content: attr(data-tooltip);
+    white-space: nowrap;
+    padding: 5px 15px;
+    margin-bottom: 15px;
+    opacity: 0;
+    transition: all 0.4s ease;
+}
+
+#questionMark:hover::after {
+    top: 90%;
+}
+
+#questionMark:hover::after, #questionMark:hover::before {
+    opacity: 1;
+}

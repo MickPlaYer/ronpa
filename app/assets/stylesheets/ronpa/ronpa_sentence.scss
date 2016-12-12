@@ -1,0 +1,57 @@
+
+.sentence {
+  white-space: nowrap;
+  position: fixed;
+  color: white;
+  font-size: 64px;
+  letter-spacing: 4px;
+  width: auto;
+  height: auto;
+  margin-left: 4px;
+  text-shadow:
+               4.000px 0.000px 0px black,
+               3.696px 1.531px 0px black,
+               2.828px 2.828px 0px black,
+               1.531px 3.696px 0px black,
+               0.000px 4.000px 0px black,
+               -1.531px 3.696px 0px black,
+               -2.828px 2.828px 0px black,
+               -3.696px 1.531px 0px black,
+               -4.000px 0.000px 0px black,
+               -3.696px -1.531px 0px black,
+               -2.828px -2.828px 0px black,
+               -1.531px -3.696px 0px black,
+               0.000px -4.000px 0px black,
+               1.531px -3.696px 0px black,
+               2.828px -2.828px 0px black,
+               3.696px -1.531px 0px black;
+  -webkit-touch-callout: none; /* iOS Safari                      */
+  -webkit-user-select: none;   /* Chrome/Safari/Opera             */
+  -moz-user-select: none;      /* Firefox                         */
+  -ms-user-select: none;       /* Internet Explorer/Edge          */
+  user-select: none;           /* Non-prefixed version, currently
+                                  not supported by any browser    */
+}
+
+.weakPoint::before {
+  content: attr(data-word);
+}
+
+.weakPoint {
+  position: relative;
+  color: black;
+}
+
+.weakPoint::after {
+  content: attr(data-word);
+  text-shadow: initial;
+  position: absolute;
+  left: 0;
+  background: rgb(255,255,0); /* Old browsers */
+  background: -moz-linear-gradient(top,  rgb(255,255,0) 1%, rgb(255,128,0) 75%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top,  rgb(255,255,0) 1%,rgb(255,128,0) 75%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom,  rgb(255,255,0) 1%,rgb(255,128,0) 75%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffff00', endColorstr='#ff8000',GradientType=0 ); /* IE6-9 */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
