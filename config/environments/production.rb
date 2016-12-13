@@ -35,10 +35,10 @@ Rails.application.configure do
   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for NGINX
 
   # Mount Action Cable outside main process or domain
-  # $ heroku config:set HEROKU_URL=$(heroku info -s | grep web_url | cut -d: -f2)
-  config.web_socket_server_url = "wss:#{ENV['HEROKU_URL']}/cable"
+  # $ heroku config:set HEROKU_URL=$(heroku info -s | grep web_url | cut -d/ -f3)
+  config.web_socket_server_url = "wss://#{ENV['HEROKU_URL']}/cable"
   config.action_cable.allowed_request_origins =
-    [ "https:#{ENV['HEROKU_URL']}", "https:#{ENV['HEROKU_URL']}" ]
+    [ "https://#{ENV['HEROKU_URL']}", "https://#{ENV['HEROKU_URL']}" ]
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
