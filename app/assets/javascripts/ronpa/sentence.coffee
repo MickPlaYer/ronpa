@@ -1,24 +1,25 @@
 class this.Sentence
   constructor: (@content) ->
-    @element = $($('#sentenceTemplate').html())
+    @element = $($(@getTemplateId()).html())
     @appendContent()
     $('body').append @element
-    @doAnimation()
+    @randomPosition()
+    @element.css('opacity', '0')
+
+  getTemplateId: () ->
+    '#sentenceTemplate'
 
   randomPosition: () ->
     @element.offset
-      top: Math.random() * ($( document ).height() - @element.height())
+      top: Math.random() * ($( document ).height() - @element.height() - 30) + 30
       left: Math.random() * ($( document ).width() - @element.width() - 300) + 300
 
   doAnimation: () ->
-    @prepare()
     @show()
     @move()
     @hide()
 
   prepare: () ->
-    @randomPosition()
-    @element.css('opacity', '0')
 
   show: () ->
     properties =
@@ -50,7 +51,12 @@ class this.Sentence
       'linear'
       () ->
         that.element.hide()
+        ronpa.animationEnd(that)
     )
+
+  delete: () ->
+    @element.remove()
+    delete this
 
   appendContent: () ->
     weakPoint = /^([^\*]*)\*\[([^\]]*)\]([^\*]*)$/.exec @content

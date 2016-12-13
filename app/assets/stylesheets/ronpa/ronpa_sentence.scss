@@ -33,6 +33,10 @@
                                   not supported by any browser    */
 }
 
+.noise {
+  color: #eb55eb;
+}
+
 .weakPoint::before {
   content: attr(data-word);
 }

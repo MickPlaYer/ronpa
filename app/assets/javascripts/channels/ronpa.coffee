@@ -1,4 +1,4 @@
-App.ronpa = App.cable.subscriptions.create "RonpaChannel",
+App.ronpaChannel = App.cable.subscriptions.create "RonpaChannel",
   connected: ->
     # Called when the subscription is ready for use on the server
 
@@ -6,11 +6,19 @@ App.ronpa = App.cable.subscriptions.create "RonpaChannel",
     # Called when the subscription has been terminated by the server
 
   received: (data) ->
-    content = data.content
-    new Sentence(content)
+    switch data.type
+      when 'sentence'
+        ronpa.createSentence(data.content)
+      when 'noise'
+        noise = new NoiseSentence(data.content)
+        noise.doAnimation()
 
   speak: ->
-    content = $('#content').val()
-    return if content == ''
+    data = {}
+    data.content = $('#content').val()
+    data.type = $('#type').val()
+    return if content is ''
     $('#content').val('')
-    @perform 'speak', content: content
+    @perform 'speak', data
+
+this.ronpaChannel = App.ronpaChannel

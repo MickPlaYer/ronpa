@@ -7,7 +7,7 @@ class RonpaChannel < ApplicationCable::Channel
   def speak data
     ActionCable.server.broadcast(
       'ronpa',
-      content: data['content']
+      data
     )
   end
 end
