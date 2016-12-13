@@ -38,7 +38,7 @@ Rails.application.configure do
   # $ heroku config:set HEROKU_URL=$(heroku info -s | grep web_url | cut -d/ -f3)
   config.web_socket_server_url = "wss://#{ENV['HEROKU_URL']}/cable"
   config.action_cable.allowed_request_origins =
-    [ "https://#{ENV['HEROKU_URL']}", "https://#{ENV['HEROKU_URL']}" ]
+    [ "https://#{ENV['HEROKU_URL']}", "http://#{ENV['HEROKU_URL']}" ]
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
