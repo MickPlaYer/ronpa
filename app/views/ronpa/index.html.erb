@@ -1,12 +1,9 @@
-<body>
-  <div id="charater"></div>
-  <div id="questionMark" data-tooltip="The word between '*[' and ']' color as weak point.">?</div>
-  <div id="poster">
-    <input id="content" onkeydown="if(event.keyCode==13){ronpa.createSentebce()}" type="text"/>
-    <button id="sendButton" onclick="ronpa.createSentebce()">送信</button>
-  </div>
-</body>
-
+<div id="charater"></div>
+<div id="questionMark" data-tooltip="The word between '*[' and ']' color as weak point.">?</div>
+<div id="poster">
+  <input id="content" type="text"/>
+  <button id="sendButton" onclick="App.ronpa.speak()">送信</button>
+</div>
 
 <script type="text/template" id="sentenceTemplate">
   <div class="sentence"></div>

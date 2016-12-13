@@ -61,4 +61,5 @@ class this.Sentence
       @element.append weakPointElement
       @element.append weakPoint[3]
     else
+      @content = @content.replace /[\*\[\]]/g, ''
       @element.append @content
