@@ -1,5 +1,8 @@
 #= require jquery.selection
+#= require ./logger
+#= require ./sentence
 
+that = this
 $(document).on "turbolinks:load", () ->
   $('#content').on 'keydown', (event) ->
     switch event.keyCode
@@ -10,6 +13,8 @@ $(document).on "turbolinks:load", () ->
         $('#content').selection('insert', { text: '*[', mode: 'before' })
         $('#content').selection('insert', { text: ']', mode: 'after' })
         event.preventDefault()
+  that.logger = new Logger
+  logger.downloadHistory()
 
 class this.Ronpa
   constructor: () ->

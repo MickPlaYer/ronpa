@@ -5,9 +5,12 @@ class RonpaChannel < ApplicationCable::Channel
   end
 
   def speak data
+    tag = Sentence.tags[data['tag']]
+    content = data['content']
+    @sentence = Sentence.create!(:content => content, :tag => tag)
     ActionCable.server.broadcast(
       'ronpa',
-      data
+      @sentence
     )
   end
 end

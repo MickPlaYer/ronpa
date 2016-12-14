@@ -1,0 +1,83 @@
+<% environment.context_class.instance_eval { include Rails.application.routes.url_helpers } %>
+
+class this.Logger
+  height: 300
+  hideHeight: 20
+  shown: false
+
+  constructor: () ->
+    that = this
+    @element = $('#logger')
+    @element.on 'click', (event) ->
+      that.changeShowHide() if event.offsetY < 0
+    @linesBox = $('#logger #lines')
+    @element.css 'height', @hideHeight
+    @linesBox.hide()
+
+  log: (sentence) ->
+    line = @createWithTimeStamp sentence
+    if sentence.tag is 'sentence'
+      @logSentence(line, sentence)
+    else if sentence.tag is 'noise'
+      @logNoise(line, sentence)
+    @linesBox.prepend line
+
+  logSentence: (line, sentence) ->
+    line.attr 'class', 'sentenceLine'
+    @appendContent line, sentence.content
+
+  logNoise: (line, noise) ->
+    line.attr 'class', 'noiseLine'
+    line.append noise.content
+
+  changeShowHide: () ->
+    if @shown
+      @hide()
+    else
+      @show()
+
+  downloadHistory: () ->
+    that = this
+    $.ajax(
+      url: '<%= sentences_path %>'
+      method: 'GET'
+      success: (data) ->
+        for sentence in data
+          that.log(sentence)
+    )
+
+  hide: () ->
+    @element.animate(
+      height: @hideHeight
+    )
+    @linesBox.fadeOut()
+    @shown = false
+
+  show: () ->
+    @element.animate(
+      height: @height
+    )
+    @linesBox.fadeIn()
+    @shown = true
+
+  createWithTimeStamp: (sentence) ->
+    line = $(document.createElement 'div')
+    time = $(document.createElement 'span')
+    time.attr 'class', 'time'
+    date = new Date(sentence.created_at)
+    time.append "#{date.toTimeString().split(' ')[0]} "
+    line.append time
+    return line
+
+  appendContent: (line, content) ->
+    weakPoint = /^([^\*]*)\*\[([^\]]*)\]([^\*]*)$/.exec content
+    if weakPoint
+      weakPointElement = $(document.createElement 'span')
+      weakPointElement.attr 'class', 'weakpoint'
+      weakPointElement.append weakPoint[2]
+      line.append weakPoint[1]
+      line.append weakPointElement
+      line.append weakPoint[3]
+    else
+      content = content.replace /[\*\[\]]/g, ''
+      line.append content

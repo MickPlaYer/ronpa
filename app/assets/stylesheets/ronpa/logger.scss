@@ -1,0 +1,64 @@
+@import "ronpa/ronpa";
+@import "ronpa/sentence";
+
+$width: 400px;
+$heigt: 300px;
+
+#logger {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: $width;
+  height: $heigt;
+  background-color: $UIBack;
+  border: 0px $UIColor solid;
+  border-top-width: 4px;
+  border-radius: 20px 20px 0px 0px;
+  color: white;
+  margin-right: 4px;
+  z-index: 1;
+}
+
+$offsetLeft: 20px;
+
+#logger::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: $offsetLeft;
+  background-color: transparent;
+  width: $width - $offsetLeft * 2;
+  height: 4px;
+  margin-top: -4px;
+  z-index: 2;
+  cursor: pointer;
+}
+
+$marginTop: 16px;
+$marginBottom: 4px;
+$marginLR: 16px;
+
+#lines {
+  margin: $marginTop $marginLR $marginBottom $marginLR;
+  height: $heigt - $marginTop - $marginBottom;
+  overflow-y: scroll;
+  white-space: pre-wrap; /* css-3 */
+  white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
+  white-space: -pre-wrap; /* Opera 4-6 */
+  white-space: -o-pre-wrap; /* Opera 7 */
+  word-wrap: break-word; /* Internet Explorer 5.5+ */
+
+  .time {
+    color: darkgray;
+  }
+
+  .sentenceLine {
+    .weakpoint {
+      color: orange;
+    }
+  }
+
+  .noiseLine {
+    color: $noiseColor;
+  }
+}

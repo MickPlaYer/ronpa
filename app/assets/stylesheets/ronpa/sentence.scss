@@ -1,3 +1,4 @@
+$noiseColor: #eb55eb;
 
 .sentence {
   white-space: nowrap;
@@ -34,7 +35,7 @@
 }
 
 .noise {
-  color: #eb55eb;
+  color: $noiseColor;
 }
 
 .weakPoint::before {

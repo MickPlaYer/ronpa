@@ -1,17 +1,20 @@
 <%
-  tool_tip = 'The word between *[ and ] color as weak point.'
+  tool_tip = 'The word between *[ and ] color as weak point. '
   tool_tip += 'Use tab key to color text selection.'
 %>
 
 <div id="charater"></div>
 <div id="questionMark" data-tooltip="<%= tool_tip %>">?</div>
-<div id="poster">
-  <input id="content" type="text"/>
-  <select id="type">
-    <option value="sentence">Sentence</option>
-    <option value="noise">Noise</option>
-  </select>
-  <button id="sendButton" onclick="ronpaChannel.speak()">Send</button>
+<div id="UI">
+  <div id="poster">
+    <input id="content" type="text"/>
+    <select id="tag">
+      <option value="sentence">Sentence</option>
+      <option value="noise">Noise</option>
+    </select>
+    <button id="sendButton" onclick="ronpaChannel.speak()">Send</button>
+  </div>
+  <div id="logger"><div id="lines"></div></div>
 </div>
 
 

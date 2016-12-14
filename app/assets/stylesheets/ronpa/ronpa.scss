@@ -1,3 +1,6 @@
+$UIColor: #C00000;
+$UIBack: rgba(0, 0, 0, 0.6);
+
 body {
   font-family: "Microsoft YaHei";
 }
@@ -17,4 +20,8 @@ body {
     background-size: auto 100%;
     background-repeat: no-repeat;
     background-position: center;
+}
+
+#UI {
+  display: inline-block;
 }
