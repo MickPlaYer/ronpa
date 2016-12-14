@@ -1,13 +1,12 @@
 class this.Sentence
+  templateId: '#sentenceTemplate'
+
   constructor: (@content) ->
-    @element = $($(@getTemplateId()).html())
+    @element = $($(@templateId).html())
     @appendContent()
     $('body').append @element
     @randomPosition()
     @element.css('opacity', '0')
-
-  getTemplateId: () ->
-    '#sentenceTemplate'
 
   randomPosition: () ->
     @element.offset
@@ -24,19 +23,19 @@ class this.Sentence
   show: () ->
     properties =
       opacity: 1
-      left: '-=100'
+      left: '-=75'
     @element.animate(
       properties
-      400
+      300
       'linear'
     )
 
   move: () ->
     properties =
-      left: '-=100'
+      left: '-=150'
     @element.animate(
       properties
-      1200
+      2000
       'linear'
     )
 
@@ -44,10 +43,10 @@ class this.Sentence
     that = this
     properties =
       opacity: 0
-      left: '-=100'
+      left: '-=75'
     @element.animate(
       properties
-      400
+      300
       'linear'
       () ->
         that.element.hide()
