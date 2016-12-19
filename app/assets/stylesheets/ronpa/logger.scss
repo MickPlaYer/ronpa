@@ -19,19 +19,17 @@ $heigt: 300px;
   z-index: 1;
 }
 
-$offsetLeft: 20px;
-
 #logger::before {
   content: '';
   position: absolute;
   top: 0;
-  left: $offsetLeft;
   background-color: transparent;
-  width: $width - $offsetLeft * 2;
-  height: 4px;
+  width: 100%;
+  height: 20px;
   margin-top: -4px;
   z-index: 2;
   cursor: pointer;
+  border-radius: 20px 20px 0px 0px;
 }
 
 $marginTop: 16px;
@@ -66,7 +64,6 @@ $marginLR: 16px;
     color: darkgray;
     width: 100%;
     text-align: center;
-    margin-top: 4px;
     margin-bottom: 4px;
   }
 }
