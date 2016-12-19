@@ -7,12 +7,7 @@ App.ronpaChannel = App.cable.subscriptions.create "RonpaChannel",
 
   received: (data) ->
     logger.log(data)
-    switch data.tag
-      when 'sentence'
-        ronpa.createSentence(data.content)
-      when 'noise'
-        noise = new NoiseSentence(data.content)
-        noise.doAnimation()
+    ronpa.createSentence(data)
 
   speak: ->
     data = {}

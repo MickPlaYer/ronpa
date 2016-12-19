@@ -20,10 +20,14 @@ class this.Ronpa
   constructor: () ->
     @sentences = []
 
-  createSentence: (content) ->
-    sentence = new Sentence(content)
-    @sentences.push(sentence)
-    sentence.doAnimation() if @sentences.length is 1
+  createSentence: (data) ->
+    if data.tag is 'sentence'
+      sentence = new Sentence(data.content)
+      @sentences.push(sentence)
+      sentence.doAnimation() if @sentences.length is 1
+    else if data.tag is 'noise'
+      noise = new NoiseSentence(data.content)
+      noise.doAnimation()
 
   animationEnd: (sentence) ->
     return if sentence.isNoise
