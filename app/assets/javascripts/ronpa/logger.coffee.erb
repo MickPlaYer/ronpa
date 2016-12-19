@@ -41,10 +41,28 @@ class this.Logger
     $.ajax(
       url: '<%= sentences_path %>'
       method: 'GET'
-      success: (data) ->
-        for sentence in data
-          that.log(sentence)
+      beforeSend: () ->
+        @senderObject = that
+      success: that.logHistory
+      # success: (data) ->
+      #   for sentence in data
+      #     that.log(sentence)
     )
+
+  logHistory: (data) ->
+    dateGroups = _.groupBy data, (e) ->
+      date = new Date(e.created_at)
+      date.toLocaleDateString()
+    for date of dateGroups
+      @senderObject.logDate(date)
+      for sentence in dateGroups[date]
+        @senderObject.log(sentence)
+
+  logDate: (date) ->
+    line = $(document.createElement 'div')
+    line.attr 'class', 'dateLine'
+    line.append "- #{date} -"
+    @linesBox.prepend line
 
   hide: () ->
     @element.animate(

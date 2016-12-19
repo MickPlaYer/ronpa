@@ -61,4 +61,12 @@ $marginLR: 16px;
   .noiseLine {
     color: $noiseColor;
   }
+
+  .dateLine {
+    color: darkgray;
+    width: 100%;
+    text-align: center;
+    margin-top: 4px;
+    margin-bottom: 4px;
+  }
 }
