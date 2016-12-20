@@ -5,6 +5,7 @@
                 url('<%= image_path c %>');
               <%= 'display:none;' if c !=  @characters.first %>
               "
+       <%= 'id=character' if c ==  @characters.first %>
   ></div>
   <% end %>
 </div>
@@ -29,6 +30,7 @@
   </div>
   <div id="logger"><div id="lines"></div></div>
 </div>
+<div id="cursor"></div>
 
 
 <script type="text/template" id="sentenceTemplate">

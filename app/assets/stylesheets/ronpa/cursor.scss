@@ -1,0 +1,14 @@
+#cursor {
+  position: absolute;
+  z-index: 2;
+  cursor: none;
+  width: 100px;
+  height: 100px;
+  background-repeat: no-repeat;
+  background: image-url('cursor.png');
+  background-size: 100px 100px;
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+}

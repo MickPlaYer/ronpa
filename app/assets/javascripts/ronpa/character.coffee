@@ -3,9 +3,12 @@ class this.Character
     @element = $('#characters')
     @characters = _.map $('#characters .character'), (character) ->
       return $(character)
+    @character = _.first @characters
 
   change: (index) ->
     return unless index
-    for character in @characters
-      character.hide()
-    @characters[index - 1].show()
+    @character.attr 'id', ''
+    @character.hide()
+    @character = @characters[index - 1]
+    @character.attr 'id', 'character'
+    @character.show()

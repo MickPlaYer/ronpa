@@ -2,9 +2,11 @@
 
 #poster {
     display: inline-block;
+    position: absolute;
     padding: 4px 12px 4px 12px;
+    margin-left: 4px;
     height: 24px;
-    z-index: 2;
+    z-index: 11;
     background: $UIBack;
     border: 0px $UIColor solid;
     border-top-width: 4px;
@@ -21,7 +23,6 @@
 }
 
 #questionMark {
-    margin-top: -6;
     display: inline-table;
     text-align: center;
     vertical-align: middle;
@@ -33,7 +34,7 @@
     background: $UIBack;
     color: white;
     position: relative;
-    z-index: 3;
+    z-index: 12;
 }
 
 #questionMark::after {

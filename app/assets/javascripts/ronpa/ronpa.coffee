@@ -9,6 +9,7 @@ $(document).on "turbolinks:load", () ->
   that.character = new Character
   that.poster = new Poster
   that.logger = new Logger
+  that.cursor = new Cursor
   logger.downloadHistory()
 
 class this.Ronpa

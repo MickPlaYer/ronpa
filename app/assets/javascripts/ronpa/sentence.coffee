@@ -7,6 +7,9 @@ class this.Sentence
     $('body').append @element
     @randomPosition()
     @element.css('opacity', '0')
+    @element.on 'click', @handleClick
+
+  handleClick: (e) ->
 
   randomPosition: () ->
     @element.offset
