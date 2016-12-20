@@ -1,18 +1,12 @@
 #= require jquery.selection
 #= require ./logger
+#= require ./poster
 #= require ./sentence
+#= require ./noise_sentence
 
 that = this
 $(document).on "turbolinks:load", () ->
-  $('#content').on 'keydown', (event) ->
-    switch event.keyCode
-      when 13 # Enter
-        App.ronpaChannel.speak()
-      when 9 # Tab
-        return if $('#content').selection() is ''
-        $('#content').selection('insert', { text: '*[', mode: 'before' })
-        $('#content').selection('insert', { text: ']', mode: 'after' })
-        event.preventDefault()
+  that.poster = new Poster
   that.logger = new Logger
   logger.downloadHistory()
 

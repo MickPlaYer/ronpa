@@ -9,12 +9,10 @@ App.ronpaChannel = App.cable.subscriptions.create "RonpaChannel",
     logger.log(data)
     ronpa.createSentence(data)
 
-  speak: ->
-    data = {}
-    data.content = $('#content').val()
-    data.tag = $('#tag').val()
-    return if content is ''
-    $('#content').val('')
+  speak: (content, tag) ->
+    data =
+      content: content
+      tag: tag
     @perform 'speak', data
 
 this.ronpaChannel = App.ronpaChannel

@@ -63,6 +63,12 @@ class this.Logger
     line.append "- #{date} -"
     @linesBox.prepend line
 
+  warn: (message) ->
+    line = $(document.createElement 'div')
+    line.attr 'class', 'warning'
+    line.append message
+    @linesBox.prepend line
+
   hide: () ->
     @element.animate(
       height: @hideHeight
