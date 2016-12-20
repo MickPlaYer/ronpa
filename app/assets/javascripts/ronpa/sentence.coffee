@@ -7,9 +7,10 @@ class this.Sentence
     $('body').append @element
     @randomPosition()
     @element.css('opacity', '0')
-    @element.on 'click', @handleClick
+    @element.on 'click', this, @handleClick
 
-  handleClick: (e) ->
+  handleClick: (event) ->
+    event.data.element.css('color', 'red')
 
   randomPosition: () ->
     @element.offset
@@ -62,8 +63,8 @@ class this.Sentence
   appendContent: () ->
     weakPoint = /^([^\*]*)\*\[([^\]]*)\]([^\*]*)$/.exec @content
     if weakPoint
-      weakPointElement = $($('#weakPointTemplate').html())
-      weakPointElement.attr 'data-word', weakPoint[2]
+      @weakPointElement = $($('#weakPointTemplate').html())
+      @weakPointElement.attr 'data-word', weakPoint[2]
       @element.append weakPoint[1]
       @element.append weakPointElement
       @element.append weakPoint[3]
