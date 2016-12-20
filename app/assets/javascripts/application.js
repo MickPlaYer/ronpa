@@ -13,7 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require underscore
+//= require image-picker
 //= require turbolinks
+//= require debug
 //= require_tree .
-
-this.Debug = {}

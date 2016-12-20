@@ -2,23 +2,21 @@
 
 #poster {
     display: inline-block;
-    background: $UIBack;
     padding: 4px 12px 4px 12px;
     height: 24px;
     z-index: 2;
+    background: $UIBack;
     border: 0px $UIColor solid;
     border-top-width: 4px;
     border-radius: 20px;
+    .button {
+        height: 20px;
+    }
 }
 
 #content {
     height: 14px;
     width: 300px;
-    border-radius: 10px;
-}
-
-#sendButton {
-    height: 20px;
     border-radius: 10px;
 }
 
@@ -56,4 +54,35 @@
 #questionMark:hover::after {
     top: 90%;
     opacity: 1;
+}
+
+#characterSelector {
+  display: none;
+  position: fixed;
+  background: $UIBack;
+  border: 0px $UIColor solid;
+  border-top-width: 4px;
+  border-radius: 20px;
+  padding: 12px 0px 0px 12px;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.thumbnail {
+  border-radius: 10px;
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+}
+
+.image_picker_image {
+  width: 300px;
+  -ms-transform: translateX(-100px);
+  -moz-transform: translateX(-100px);
+  -webkit-transform: translateX(-100px);
+  transform: translateX(-100px);
 }

@@ -6,6 +6,7 @@
 
 that = this
 $(document).on "turbolinks:load", () ->
+  that.character = new Character
   that.poster = new Poster
   that.logger = new Logger
   logger.downloadHistory()
@@ -16,7 +17,7 @@ class this.Ronpa
 
   createSentence: (data) ->
     if data.tag is 'sentence'
-      sentence = new Sentence(data.content)
+      sentence = new Sentence(data.content, data.character)
       @sentences.push(sentence)
       sentence.doAnimation() if @sentences.length is 1
     else if data.tag is 'noise'

@@ -5,7 +5,7 @@ body {
   font-family: "Microsoft YaHei";
 }
 
-#charater {
+.character {
     position: fixed;
     z-index: -1;
     left: 50%;
@@ -16,12 +16,12 @@ body {
     -moz-transform: translateX(-50%) translateY(-50%);
     -webkit-transform: translateX(-50%) translateY(-50%);
     transform: translateX(-50%) translateY(-50%);
-    background: image-url('ronpa/01.png');
+    // background: image-url('ronpa/01.png');
     background-size: auto 100%;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 #UI {
-  display: inline-block;
+  // display: inline-block;
 }

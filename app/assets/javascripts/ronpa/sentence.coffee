@@ -1,7 +1,7 @@
 class this.Sentence
   templateId: '#sentenceTemplate'
 
-  constructor: (@content) ->
+  constructor: (@content, @character) ->
     @element = $($(@templateId).html())
     @appendContent()
     $('body').append @element
@@ -18,9 +18,8 @@ class this.Sentence
     @move()
     @hide()
 
-  prepare: () ->
-
   show: () ->
+    character.change(@character)
     properties =
       opacity: 1
       left: '-=75'

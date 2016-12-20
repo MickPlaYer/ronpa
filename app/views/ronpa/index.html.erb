@@ -1,18 +1,31 @@
-<%
-  tool_tip = 'The word between *[ and ] color as weak point. '
-  tool_tip += 'Use tab key to color text selection.'
-%>
-
-<div id="charater"></div>
-<div id="questionMark" data-tooltip="<%= tool_tip %>">?</div>
+<div id="characters">
+  <% @characters.each do |c| %>
+  <div class="character"
+       style="background-image:
+                url('<%= image_path c %>');
+              <%= 'display:none;' if c !=  @characters.first %>
+              "
+  ></div>
+  <% end %>
+</div>
 <div id="UI">
+  <div id="questionMark" data-tooltip="<%= @tool_tip %>">?</div>
   <div id="poster">
     <input id="content" type="text"/>
+    <button id="characterButton" class="button">(._.)</button>
     <select id="tag">
       <option value="sentence">Sentence</option>
       <option value="noise">Noise</option>
     </select>
-    <button id="sendButton" onclick="poster.postSentence()">Send</button>
+    <button class="button" onclick="poster.postSentence()">Send</button>
+    <div id="characterSelector">
+      <select id="character">
+        <% @characters.each do |c| %>
+        <option data-img-src="<%= image_path c %>"
+                value="<%= c.match(/\d+/).to_s.to_i %>"></option>
+        <% end %>
+      </select>
+    </div>
   </div>
   <div id="logger"><div id="lines"></div></div>
 </div>

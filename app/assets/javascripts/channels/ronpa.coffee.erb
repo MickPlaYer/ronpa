@@ -9,10 +9,11 @@ App.ronpaChannel = App.cable.subscriptions.create "RonpaChannel",
     logger.log(data)
     ronpa.createSentence(data)
 
-  speak: (content, tag) ->
+  speak: (content, tag, character) ->
     data =
       content: content
       tag: tag
+    data.character = character if tag is 'sentence'
     @perform 'speak', data
 
 this.ronpaChannel = App.ronpaChannel
