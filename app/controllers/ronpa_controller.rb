@@ -4,5 +4,6 @@ class RonpaController < ApplicationController
     @tool_tip += 'Use tab key to color text selection.'
     @characters = Dir.glob("#{Rails.root}/app/assets/images/ronpa/*.png")
     @characters.map { |e| e.gsub! "#{Rails.root}/app/assets/images/", '' }
+    @characters.sort!
   end
 end
