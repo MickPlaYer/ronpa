@@ -1,16 +1,38 @@
 class this.Sentence
   templateId: '#sentenceTemplate'
+  weakPointClick: false
 
   constructor: (@content, @character) ->
     @element = $($(@templateId).html())
+    @element.on 'click', this, @handleClick
     @appendContent()
     $('body').append @element
     @randomPosition()
     @element.css('opacity', '0')
-    @element.on 'click', this, @handleClick
 
   handleClick: (event) ->
-    event.data.element.css('color', 'red')
+    that = event.data
+    return if that.weakPointClick
+    that.element.css('color', 'red')
+    setTimeout(
+      () ->
+        that.element.css('color', 'white')
+      100
+    )
+
+  handleWeakPointClick: (event) ->
+    that = event.data
+    that.weakPointClick = true
+    that.element.clearQueue().stop()
+    that.element.rotate
+      angle: 0
+      animateTo: 360 * 3
+      duration: 1000
+      easing: (x, t, b, c, d) ->
+        return c * (t / d) + b
+    that.element.fadeOut 500, () ->
+      that.element.hide()
+      ronpa.animationEnd(that)
 
   randomPosition: () ->
     @element.offset
@@ -61,13 +83,19 @@ class this.Sentence
     delete this
 
   appendContent: () ->
-    weakPoint = /^([^\*]*)\*\[([^\]]*)\]([^\*]*)$/.exec @content
-    if weakPoint
-      @weakPointElement = $($('#weakPointTemplate').html())
-      @weakPointElement.attr 'data-word', weakPoint[2]
-      @element.append weakPoint[1]
-      @element.append weakPointElement
-      @element.append weakPoint[3]
+    words = /^([^\*]*)\*\[([^\]]*)\]([^\*]*)$/.exec @content
+    if words
+      @weakPoint = @createWeakPoint words[2]
+      @element.append words[1]
+      @element.append @weakPoint
+      @element.append words[3]
     else
       @content = @content.replace /[\*\[\]]/g, ''
       @element.append @content
+
+  createWeakPoint: (word) ->
+    that = this
+    weakPoint = $($('#weakPointTemplate').html())
+    weakPoint.attr 'data-word', word
+    weakPoint.on 'click', this, @handleWeakPointClick
+    return weakPoint

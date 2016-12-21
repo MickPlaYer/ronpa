@@ -1,4 +1,5 @@
 #= require jquery.selection
+#= require jquery.rotate
 #= require ./logger
 #= require ./poster
 #= require ./sentence

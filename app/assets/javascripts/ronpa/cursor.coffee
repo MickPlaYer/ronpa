@@ -16,5 +16,6 @@ class this.Cursor
       that.cursor.animate({ opacity: 1 })
     @cursor.on 'click', (e) ->
       that.cursor.css 'pointer-events', 'none'
-      document.elementFromPoint(e.pageX, e.pageY).click();
+      element = document.elementFromPoint(e.pageX, e.pageY)
+      element.click()
       that.cursor.css 'pointer-events', 'all'
