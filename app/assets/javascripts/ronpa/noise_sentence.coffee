@@ -22,8 +22,8 @@ class this.NoiseSentence extends Sentence
 
   handleClick: (event) ->
     that = event.data
-    that.element.clearQueue()
-    that.element.fadeOut 'fast', () ->
+    that.element.clearQueue().stop()
+    that.element.fadeOut 100, () ->
       that.delete()
 
   appendContent: () ->

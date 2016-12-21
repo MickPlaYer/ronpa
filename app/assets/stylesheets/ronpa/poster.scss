@@ -60,6 +60,7 @@
 #characterSelector {
   display: none;
   position: fixed;
+  width: 756px;
   background: $UIBack;
   border: 0px $UIColor solid;
   border-top-width: 4px;
@@ -71,6 +72,12 @@
   -moz-transform: translateX(-50%) translateY(-50%);
   -webkit-transform: translateX(-50%) translateY(-50%);
   transform: translateX(-50%) translateY(-50%);
+  -webkit-touch-callout: none; /* iOS Safari                      */
+  -webkit-user-select: none;   /* Chrome/Safari/Opera             */
+  -moz-user-select: none;      /* Firefox                         */
+  -ms-user-select: none;       /* Internet Explorer/Edge          */
+  user-select: none;           /* Non-prefixed version, currently
+                                  not supported by any browser    */
 }
 
 .thumbnail {
