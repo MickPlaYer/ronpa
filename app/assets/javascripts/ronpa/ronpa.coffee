@@ -11,6 +11,7 @@ $(document).on "turbolinks:load", () ->
   that.poster = new Poster
   that.logger = new Logger
   that.cursor = new Cursor
+  cursor.rotateCircle()
   logger.downloadHistory()
 
 class this.Ronpa
