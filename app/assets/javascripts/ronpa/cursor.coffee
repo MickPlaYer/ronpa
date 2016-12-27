@@ -1,10 +1,18 @@
 class this.Cursor
   constructor: () ->
-    that = this
     @cursor = $('#cursor')
     @center = $('#cursor .center')
     @circle = $('#cursor .circle')
     @cursor.css 'opacity', 0
+    @bindEvents()
+
+  bindEvents: () ->
+    @bindMoveEvent()
+    @bindShowHideEvent()
+    @bindClickEvent()
+
+  bindMoveEvent: () ->
+    that = this
     $(document).on 'mousemove', (e) ->
       that.cursor.css
          left:  e.pageX
@@ -15,6 +23,9 @@ class this.Cursor
       that.circle.css
          left:  e.pageX - 43
          top:   e.pageY - 43
+
+  bindShowHideEvent: () ->
+    that = this
     @cursor.on 'mouseleave', (e) ->
       unless e.relatedTarget is $('#characters #character')[0]
         that.cursor.clearQueue() if that.cursor.queue().length > 1
@@ -22,6 +33,9 @@ class this.Cursor
     @cursor.on 'mouseenter', (e) ->
       that.cursor.clearQueue() if that.cursor.queue().length > 1
       that.cursor.animate({ opacity: 1 })
+
+  bindClickEvent: () ->
+    that = this
     @cursor.on 'click', (e) ->
       that.cursor.css 'pointer-events', 'none'
       element = document.elementFromPoint(e.pageX, e.pageY)
