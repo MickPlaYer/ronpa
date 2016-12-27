@@ -35,9 +35,12 @@ class this.Sentence
       ronpa.animationEnd(that)
 
   randomPosition: () ->
+    horizonMove = 75 + 150 + 75
+    horizonRange = $(document).width() - @element.width() - horizonMove
+    verticalRange = $(document).height() - @element.height() - 30
     @element.offset
-      top: Math.random() * ($( document ).height() - @element.height() - 30) + 30
-      left: Math.random() * ($( document ).width() - @element.width() - 300) + 300
+      top: Math.random() * verticalRange + 30
+      left: Math.random() * horizonRange + horizonMove
 
   doAnimation: () ->
     @show()
@@ -57,7 +60,7 @@ class this.Sentence
 
   move: () ->
     properties =
-      left: '-=150'
+      left: "-=150"
     @element.animate(
       properties
       2000
