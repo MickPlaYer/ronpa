@@ -30,7 +30,8 @@ class this.Logger
 
   logNoise: (line, noise) ->
     line.attr 'class', 'noiseLine'
-    line.append noise.content
+    content = noise.content.replace /[\*\[\]]/g, ''
+    line.append content
 
   changeShowHide: () ->
     if @shown
