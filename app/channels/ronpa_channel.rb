@@ -12,7 +12,14 @@ class RonpaChannel < ApplicationCable::Channel
     sentence['character'] = data['character'] if @sentence.sentence?
     ActionCable.server.broadcast(
       'ronpa',
-      sentence
+      { sentence: sentence, type: 'speak'}
+    )
+  end
+
+  def shoot data
+    ActionCable.server.broadcast(
+      'ronpa',
+      { id: data['id'], type: 'shoot'}
     )
   end
 end

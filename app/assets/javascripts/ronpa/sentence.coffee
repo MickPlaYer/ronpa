@@ -2,7 +2,7 @@ class this.Sentence
   templateId: '#sentenceTemplate'
   weakPointClick: false
 
-  constructor: (@content, @character) ->
+  constructor: (@id, @content, @character) ->
     @element = $($(@templateId).html())
     @element.on 'click', this, @handleClick
     @appendContent()
@@ -22,6 +22,12 @@ class this.Sentence
 
   handleWeakPointClick: (event) ->
     that = event.data
+    ronpaChannel.shoot(that.id)
+    that.onShoot()
+
+  onShoot: () ->
+    that = this
+    return if that.weakPointClick
     that.weakPointClick = true
     that.element.clearQueue().stop()
     that.element.rotate

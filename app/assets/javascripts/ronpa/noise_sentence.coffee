@@ -4,27 +4,22 @@ class this.NoiseSentence extends Sentence
   isNoise: true
   templateId: '#noiseTemplate'
 
-  constructor: (@content) ->
-    super(@content)
-
-  hide: () ->
-    that = this
-    properties =
-      opacity: 0
-      left: '-=75'
-    @element.animate(
-      properties
-      300
-      'linear'
-      () ->
-        that.delete()
-    )
+  constructor: (@id, @content) ->
+    super(@id, @content)
 
   handleClick: (event) ->
     that = event.data
+    return if that.weakPointClick
+    ronpaChannel.shoot(that.id)
+    that.onShoot()
+
+  onShoot: () ->
+    that = this
+    return if that.weakPointClick
+    that.weakPointClick = true
     that.element.clearQueue().stop()
     that.element.fadeOut 100, () ->
-      that.delete()
+      ronpa.animationEnd(that)
 
   appendContent: () ->
     @content = @content.replace /[\*\[\]]/g, ''

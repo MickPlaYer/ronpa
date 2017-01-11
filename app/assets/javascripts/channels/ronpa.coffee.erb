@@ -6,8 +6,11 @@ App.ronpaChannel = App.cable.subscriptions.create "RonpaChannel",
     # Called when the subscription has been terminated by the server
 
   received: (data) ->
-    logger.log(data)
-    ronpa.createSentence(data)
+    if data.type is 'speak'
+      logger.log(data.sentence)
+      ronpa.createSentence(data.sentence)
+    else if data.type is 'shoot'
+      ronpa.shoot(data.id)
 
   speak: (content, tag, character) ->
     data =
@@ -15,5 +18,9 @@ App.ronpaChannel = App.cable.subscriptions.create "RonpaChannel",
       tag: tag
     data.character = character if tag is 'sentence'
     @perform 'speak', data
+
+  shoot: (id) ->
+    @perform 'shoot', { id: id }
+
 
 this.ronpaChannel = App.ronpaChannel
